@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: mix phx.server
+    volumes:
+      - .:/usr/local/phoenix
+    links: [db]
+    ports:
+      - 4000:4000
+    stdin_open: true
+    tty: true
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=daily_report
+      - POSTGRES_PASSWORD=daily_report
+      - POSTGRES_DB=daily_report_dev
+    ports:
+      - 5432:5432
