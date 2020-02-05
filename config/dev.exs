@@ -74,3 +74,7 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :daily_report, DailyReport.UserManager.Guardian,
+       issuer: "daily_report",
+       secret_key: "LNIC2ISLo6f7FyXfai+rViERcEiuDYhJwR+C1fK6JqByBkJDuVBliJSDj1iNaO7R"
