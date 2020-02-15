@@ -1,6 +1,5 @@
 defmodule DailyReportWeb.SessionController do
   use DailyReportWeb, :controller
-
   alias DailyReport.{UserManager, UserManager.User, UserManager.Guardian}
 
   def new(conn, _) do

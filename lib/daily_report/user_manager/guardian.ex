@@ -1,6 +1,5 @@
 defmodule DailyReport.UserManager.Guardian do
   use Guardian, otp_app: :daily_report
-
   alias DailyReport.UserManager
 
   def subject_for_token(user, _claims) do
@@ -13,4 +12,8 @@ defmodule DailyReport.UserManager.Guardian do
       user -> {:ok, user}
     end
   end
+
+  def current_user(conn), do: Guardian.Plug.current_resource(conn, [])
+
+  def logged_in?(conn), do: Guardian.Plug.authenticated?(conn, [])
 end

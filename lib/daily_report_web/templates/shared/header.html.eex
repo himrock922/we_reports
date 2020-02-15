@@ -1,0 +1,9 @@
+<section class="container">
+  <nav role="navigation">
+    <ul>
+      <%= if logged_in?(@conn) do %>
+        <li><a class="button" href="<%= Routes.session_path(@conn, :logout) %>">ログアウト</a></li>
+      <% end %>
+    </ul>
+  </nav>
+</section>
