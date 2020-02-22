@@ -5,7 +5,6 @@ defmodule DailyReport.Repo.Migrations.CreateUsers do
     create table(:users) do
       add :username, :string
       add :password, :string
-
       timestamps()
     end
 

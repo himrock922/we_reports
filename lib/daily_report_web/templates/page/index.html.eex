@@ -3,8 +3,8 @@
   <p>これは、日々の振り返りをちょっぴりリッチに、計測できるシステムです</p>
 </section>
 
-<section class="row">
-  <article class="column column-50 column-offset-50">
+<section class="row row-center">
+  <article class="column">
     <a class="button" href="<%= Routes.session_path(@conn, :new) %>">ログイン</a>
   </article>
 </section>
