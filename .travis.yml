@@ -4,10 +4,17 @@ otp_release:
   - 22.2.1
 elixir:
   - 1.9.4
+services:
+  - postgresql
+addons:
+  postgresql: "10"
 cache:
   directories:
     - _build
     - deps
+before_script:
+  - cp config/travis.exs config/test.exs
+  - mix do ecto.create, ecto.migrate
 script:
   - mix credo --strict
   - mix dialyzer --halt-exit-status
