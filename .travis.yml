@@ -14,13 +14,14 @@ addons:
     - postgresql-client-10
 env:
   global:
-  - PGPORT=5433
+  - PGPORT=5432
   - MIX_ENV=test
 cache:
   directories:
     - _build
     - deps
 before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/travis.exs config/test.exs
   - mix do ecto.create, ecto.migrate
 script:
