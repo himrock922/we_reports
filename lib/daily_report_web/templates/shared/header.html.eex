@@ -1,4 +1,5 @@
 <section class="container">
+  DailyReport
   <nav role="navigation">
     <ul>
       <%= if logged_in?(@conn) do %>

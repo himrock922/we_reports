@@ -1,0 +1,14 @@
+language: elixir
+sudo: false
+otp_release:
+  - 22.2.1
+elixir:
+  - 1.9.4-otp-22
+cache:
+  directories:
+    - _build
+    - deps
+script:
+  - mix credo --strict
+  - mix dialyzer --halt-exit-status
+  - mix test

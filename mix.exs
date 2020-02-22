@@ -34,7 +34,9 @@ defmodule DailyReport.MixProject do
   defp deps do
     [
       {:argon2_elixir, "~> 2.0"},
+      {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
       {:comeonin, "~> 5.1.0"},
+      {:dialyxir, "~> 1.0.0-rc.7", only: [:dev, :test], runtime: false},
       {:phoenix, "~> 1.4.11"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
