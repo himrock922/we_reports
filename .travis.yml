@@ -25,6 +25,6 @@ before_script:
   - cp config/travis.exs config/test.exs
   - mix do ecto.create, ecto.migrate
 script:
-  - mix credo --strict
+  - mix credo --strict --ignore design
   - mix dialyzer --halt-exit-status
   - mix test
