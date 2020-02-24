@@ -1,18 +1,16 @@
 defmodule DailyReportWeb.ArticleControllerTest do
   use DailyReportWeb.ConnCase
-
   alias DailyReport.Articles
-
   @create_attrs %{body: "some body", title: "some title"}
   @update_attrs %{body: "some updated body", title: "some updated title"}
   @invalid_attrs %{body: nil, title: nil}
-
   def fixture(:article) do
     {:ok, article} = Articles.create_article(@create_attrs)
     article
   end
 
   describe "index" do
+    @tag :authenticated
     test "lists all article", %{conn: conn} do
       conn = get(conn, Routes.article_path(conn, :index))
       assert html_response(conn, 200) =~ "Listing Article"
@@ -20,6 +18,7 @@ defmodule DailyReportWeb.ArticleControllerTest do
   end
 
   describe "new article" do
+    @tag :authenticated
     test "renders form", %{conn: conn} do
       conn = get(conn, Routes.article_path(conn, :new))
       assert html_response(conn, 200) =~ "New Article"
@@ -27,6 +26,7 @@ defmodule DailyReportWeb.ArticleControllerTest do
   end
 
   describe "create article" do
+    @tag :authenticated
     test "redirects to show when data is valid", %{conn: conn} do
       conn = post(conn, Routes.article_path(conn, :create), article: @create_attrs)
 
@@ -37,6 +37,7 @@ defmodule DailyReportWeb.ArticleControllerTest do
       assert html_response(conn, 200) =~ "Show Article"
     end
 
+    @tag :authenticated
     test "renders errors when data is invalid", %{conn: conn} do
       conn = post(conn, Routes.article_path(conn, :create), article: @invalid_attrs)
       assert html_response(conn, 200) =~ "New Article"
@@ -45,7 +46,7 @@ defmodule DailyReportWeb.ArticleControllerTest do
 
   describe "edit article" do
     setup [:create_article]
-
+    @tag :authenticated
     test "renders form for editing chosen article", %{conn: conn, article: article} do
       conn = get(conn, Routes.article_path(conn, :edit, article))
       assert html_response(conn, 200) =~ "Edit Article"
@@ -54,7 +55,7 @@ defmodule DailyReportWeb.ArticleControllerTest do
 
   describe "update article" do
     setup [:create_article]
-
+    @tag :authenticated
     test "redirects when data is valid", %{conn: conn, article: article} do
       conn = put(conn, Routes.article_path(conn, :update, article), article: @update_attrs)
       assert redirected_to(conn) == Routes.article_path(conn, :show, article)
@@ -63,6 +64,7 @@ defmodule DailyReportWeb.ArticleControllerTest do
       assert html_response(conn, 200) =~ "some updated body"
     end
 
+    @tag :authenticated
     test "renders errors when data is invalid", %{conn: conn, article: article} do
       conn = put(conn, Routes.article_path(conn, :update, article), article: @invalid_attrs)
       assert html_response(conn, 200) =~ "Edit Article"
@@ -71,7 +73,7 @@ defmodule DailyReportWeb.ArticleControllerTest do
 
   describe "delete article" do
     setup [:create_article]
-
+    @tag :authenticated
     test "deletes chosen article", %{conn: conn, article: article} do
       conn = delete(conn, Routes.article_path(conn, :delete, article))
       assert redirected_to(conn) == Routes.article_path(conn, :index)

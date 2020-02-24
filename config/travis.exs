@@ -16,3 +16,7 @@ config :daily_report, DailyReportWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :daily_report, DailyReport.UserManager.Guardian,
+       issuer: "daily_report",
+       secret_key: "DU6N1a+1h/n2pTKaVmfkeuOBkgh2wJI9a1q94w3/3S6jP4vvOQYxGDBdtRXUXh03"
