@@ -26,5 +26,5 @@ before_script:
   - mix do ecto.create, ecto.migrate
 script:
   - mix credo --strict --ignore design
-  - mix dialyzer --halt-exit-status
+  - mix dialyzer --halt-exit-status --format short
   - mix test
