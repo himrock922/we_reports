@@ -10,7 +10,8 @@ defmodule DailyReport.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      dialyzer: [ignore_warnings: ".dialyzer_ignore.exs"],
     ]
   end
 
