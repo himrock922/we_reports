@@ -54,7 +54,7 @@ defmodule DailyReportWeb.ConnCase do
     else
       {Phoenix.ConnTest.build_conn()}
     end
-  
+
     {:ok, conn: conn}
   end
 end

@@ -1,4 +1,5 @@
 defmodule DailyReport.Articles.Article do
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
 

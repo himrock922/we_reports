@@ -1,4 +1,5 @@
 defmodule DailyReport.UserManager.User do
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
   alias DailyReport.UserManager.User

@@ -1,4 +1,5 @@
 defmodule DailyReport.UserManager.Guardian do
+  @moduledoc false
   use Guardian, otp_app: :daily_report
   alias DailyReport.UserManager
 
