@@ -4,9 +4,9 @@ defmodule DailyReport.UserManager do
   """
 
   import Ecto.Query, warn: false
+  alias Argon2
   alias DailyReport.Repo
   alias DailyReport.UserManager.User
-  alias Argon2
 
   @doc """
   Returns the list of users.

@@ -1,4 +1,5 @@
 defmodule DailyReport.UserManager.User do
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
   alias DailyReport.UserManager.User
@@ -8,6 +9,7 @@ defmodule DailyReport.UserManager.User do
     field :username, :string
 
     timestamps()
+    has_many :articles, DailyReport.Articles.Article
   end
 
   @doc false

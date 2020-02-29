@@ -14,19 +14,27 @@ defmodule DailyReportWeb.ConnCase do
   by setting `use DailyReportWeb.ConnCase, async: true`, although
   this option is not recommendded for other databases.
   """
-
   use ExUnit.CaseTemplate
+  alias DailyReport.{UserManager, UserManager.Guardian}
 
   using do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
       alias DailyReportWeb.Router.Helpers, as: Routes
-
       # The default endpoint for testing
       @endpoint DailyReportWeb.Endpoint
     end
   end
+
+  @default_opts [
+    store: :cookie,
+    key: "secretkey",
+    encryption_salt: "encrypted cookie salt",
+    signing_salt: "signing salt"
+  ]
+  @signing_opts Plug.Session.init(Keyword.put(@default_opts, :encrypt, false))
+  @valid_user %{password: "some password", username: "some username"}
 
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(DailyReport.Repo)
@@ -35,6 +43,18 @@ defmodule DailyReportWeb.ConnCase do
       Ecto.Adapters.SQL.Sandbox.mode(DailyReport.Repo, {:shared, self()})
     end
 
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    {conn} = if tags[:authenticated] do
+      {:ok, user} = UserManager.create_user(@valid_user)
+
+      conn = Phoenix.ConnTest.build_conn()
+      |> Plug.Session.call(@signing_opts)
+      |> Plug.Conn.fetch_session
+      |> Guardian.Plug.sign_in(user)
+      {conn}
+    else
+      {Phoenix.ConnTest.build_conn()}
+    end
+
+    {:ok, conn: conn}
   end
 end

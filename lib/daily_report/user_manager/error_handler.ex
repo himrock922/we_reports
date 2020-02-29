@@ -1,4 +1,5 @@
 defmodule DailyReport.UserManager.ErrorHandler do
+  @moduledoc false
   import Plug.Conn
 
   @behaviour Guardian.Plug.ErrorHandler

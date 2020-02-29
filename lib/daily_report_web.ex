@@ -20,7 +20,6 @@ defmodule DailyReportWeb do
   def controller do
     quote do
       use Phoenix.Controller, namespace: DailyReportWeb
-
       import Plug.Conn
       import DailyReportWeb.Gettext
       alias DailyReportWeb.Router.Helpers, as: Routes
@@ -42,6 +41,7 @@ defmodule DailyReportWeb do
       import DailyReportWeb.ErrorHelpers
       import DailyReportWeb.Gettext
       alias DailyReportWeb.Router.Helpers, as: Routes
+      import DailyReport.UserManager.Guardian, only: [current_user: 1, logged_in?: 1]
     end
   end
 

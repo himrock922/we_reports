@@ -1,4 +1,5 @@
 defmodule DailyReport.UserManager.Pipeline do
+  @moduledoc false
   use Guardian.Plug.Pipeline,
       otp_app: :daily_report,
       error_handler: DailyReport.UserManager.ErrorHandler,
