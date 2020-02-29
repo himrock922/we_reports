@@ -35,7 +35,6 @@ defmodule DailyReportWeb.Router do
 
   scope "/", DailyReportWeb do
     pipe_through [:browser, :auth, :ensure_auth]
-    resources "/article", ArticleController
   end
 
   # Other scopes may use custom stacks.

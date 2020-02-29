@@ -9,7 +9,6 @@ defmodule DailyReport.UserManager.User do
     field :username, :string
 
     timestamps()
-    has_many :articles, DailyReport.Articles.Article
   end
 
   @doc false
