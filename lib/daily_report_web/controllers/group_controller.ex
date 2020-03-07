@@ -4,7 +4,7 @@ defmodule DailyReportWeb.GroupController do
   alias DailyReport.Groups
   alias DailyReport.Groups.Group
   alias DailyReport.UserManager
-  require IEx
+
   def index(conn, _params) do
     groups = Groups.list_groups()
     render(conn, "index.html", groups: groups)

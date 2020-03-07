@@ -49,7 +49,6 @@ defmodule DailyReport.Groups do
 
   """
   def create_group(attrs \\ %{}) do
-    IEx.pry
     %Group{}
     |> Group.changeset(attrs)
     |> multiple_put_users(attrs)
