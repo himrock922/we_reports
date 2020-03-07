@@ -6,7 +6,7 @@ defmodule DailyReportWeb.SessionController do
     changeset = UserManager.change_user(%User{})
     maybe_user = Guardian.Plug.current_resource(conn)
     if maybe_user do
-      redirect(conn, to: "/")
+      redirect(conn, to: "/groups")
     else
       render(conn, "new.html", changeset: changeset, action: Routes.session_path(conn, :login))
     end
@@ -27,7 +27,7 @@ defmodule DailyReportWeb.SessionController do
     conn
     |> put_flash(:info, "DailyReportにログインしました!")
     |> Guardian.Plug.sign_in(user)
-    |> redirect(to: "/article")
+    |> redirect(to: "/groups")
   end
 
   defp login_reply({:error, reason}, conn) do

@@ -1,0 +1,21 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>グループの作成に失敗しました。エラー部分を修正し再度グループの作成をお願いします。</p>
+    </div>
+  <% end %>
+
+  <%= label f, :name, "グループ名" %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :description, "グループ概要" %>
+  <%= textarea f, :description %>
+  <%= error_tag f, :description %>
+
+  <%= label f, :groups_users, "グループに所属するユーザを追加" %>
+  <%= multiple_select(f, :groups_users, Enum.map(@users, &{&1.username, &1.id})) %>
+  <div>
+    <%= submit "保存" %>
+  </div>
+<% end %>

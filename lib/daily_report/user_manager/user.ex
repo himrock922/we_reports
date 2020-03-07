@@ -7,7 +7,7 @@ defmodule DailyReport.UserManager.User do
   schema "users" do
     field :password, :string
     field :username, :string
-
+    many_to_many :groups, DailyReport.Groups.Group, join_through: "groups_users"
     timestamps()
   end
 

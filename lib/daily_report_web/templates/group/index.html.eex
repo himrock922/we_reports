@@ -1,0 +1,28 @@
+<h1>グループ一覧</h1>
+
+<span><%= link "新規作成", class: "button", to: Routes.group_path(@conn, :new) %></span>
+
+<table>
+  <thead>
+    <tr>
+      <th>グループ名</th>
+      <th>概要</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for group <- @groups do %>
+    <tr>
+      <td><%= group.name %></td>
+      <td><%= group.description %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.group_path(@conn, :show, group) %></span>
+        <span><%= link "Edit", to: Routes.group_path(@conn, :edit, group) %></span>
+        <span><%= link "Delete", to: Routes.group_path(@conn, :delete, group), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

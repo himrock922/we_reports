@@ -37,6 +37,12 @@ defmodule DailyReport.UserManager do
   """
   def get_user!(id), do: Repo.get!(User, id)
 
+  def get_users(nil), do: []
+
+  def get_users(ids) do
+    Repo.all(from u in User, where: u.id in ^ids)
+  end
+
   @doc """
   Creates a user.
 
