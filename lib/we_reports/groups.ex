@@ -2,11 +2,9 @@ defmodule WeReports.Groups do
   @moduledoc """
   The Groups context.
   """
-  require IEx
+
   import Ecto.Query, warn: false
-  alias WeReports.Repo
-  alias WeReports.Groups.Group
-  alias WeReports.UserManager
+  alias WeReports.{Groups.Group, Repo, UserManager}
   @doc """
   Returns the list of groups.
 
