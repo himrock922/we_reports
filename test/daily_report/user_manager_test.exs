@@ -1,10 +1,10 @@
-defmodule DailyReport.UserManagerTest do
-  use DailyReport.DataCase
+defmodule WeReports.UserManagerTest do
+  use WeReports.DataCase
 
-  alias DailyReport.UserManager
+  alias WeReports.UserManager
 
   describe "users" do
-    alias DailyReport.UserManager.User
+    alias WeReports.UserManager.User
 
     @valid_attrs %{password: "some password", username: "some username"}
     @update_attrs %{password: "some updated password", username: "some updated username"}

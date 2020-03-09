@@ -1,3 +1,3 @@
-defmodule DailyReportWeb.LayoutViewTest do
-  use DailyReportWeb.ConnCase, async: true
+defmodule WeReportsWeb.LayoutViewTest do
+  use WeReportsWeb.ConnCase, async: true
 end

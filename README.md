@@ -1,4 +1,4 @@
-# DailyReport
+# WeReports
 
 To start your Phoenix server:
 

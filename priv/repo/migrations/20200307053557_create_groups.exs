@@ -1,4 +1,4 @@
-defmodule DailyReport.Repo.Migrations.CreateGroups do
+defmodule WeReports.Repo.Migrations.CreateGroups do
   use Ecto.Migration
   import EctoEnum
   defenum StatusEnum, :type, [:sponsor, :project]

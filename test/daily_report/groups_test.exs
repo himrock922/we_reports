@@ -1,10 +1,10 @@
-defmodule DailyReport.GroupsTest do
-  use DailyReport.DataCase
+defmodule WeReports.GroupsTest do
+  use WeReports.DataCase
 
-  alias DailyReport.Groups
+  alias WeReports.Groups
 
   describe "groups" do
-    alias DailyReport.Groups.Group
+    alias WeReports.Groups.Group
 
     @valid_attrs %{description: "some description", name: "some name"}
     @update_attrs %{description: "some updated description", name: "some updated name"}

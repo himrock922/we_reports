@@ -1,4 +1,4 @@
-defmodule DailyReport.Repo.Migrations.CreateGroupsUsers do
+defmodule WeReports.Repo.Migrations.CreateGroupsUsers do
   use Ecto.Migration
 
   def change do

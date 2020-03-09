@@ -1,5 +1,5 @@
-defmodule DailyReportWeb.PageControllerTest do
-  use DailyReportWeb.ConnCase
+defmodule WeReportsWeb.PageControllerTest do
+  use WeReportsWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

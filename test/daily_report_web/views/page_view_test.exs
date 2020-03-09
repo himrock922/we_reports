@@ -1,3 +1,3 @@
-defmodule DailyReportWeb.PageViewTest do
-  use DailyReportWeb.ConnCase, async: true
+defmodule WeReportsWeb.PageViewTest do
+  use WeReportsWeb.ConnCase, async: true
 end

@@ -31,11 +31,13 @@ module.exports = (env, options) => ({
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /bootstrap\.native/,
+        use: {
+          loader: "bootstrap.native-loader"
+        }
       }
     ]
-  },
-  plugins: [
-    new MiniCssExtractPlugin({ filename: '../css/app.css' }),
-    new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
-  ]
+  }
 });

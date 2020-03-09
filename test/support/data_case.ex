@@ -1,4 +1,4 @@
-defmodule DailyReport.DataCase do
+defmodule WeReports.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,7 +10,7 @@ defmodule DailyReport.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use DailyReportWeb.DataCase, async: true`, although
+  by setting `use WeReportsWeb.DataCase, async: true`, although
   this option is not recommendded for other databases.
   """
 
@@ -18,20 +18,20 @@ defmodule DailyReport.DataCase do
 
   using do
     quote do
-      alias DailyReport.Repo
+      alias WeReports.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import DailyReport.DataCase
+      import WeReports.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(DailyReport.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(WeReports.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(DailyReport.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(WeReports.Repo, {:shared, self()})
     end
 
     :ok

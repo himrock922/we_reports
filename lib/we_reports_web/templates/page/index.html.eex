@@ -1,0 +1,8 @@
+<div class="jumbotron">
+  <h1 class="display-4">WeReports</h1>
+  <p class="lead">WeReportsは、日々の振り返りをちょっぴりリッチに、計測できるシステムです</p>
+
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="<%= Routes.session_path(@conn, :new) %>">ログイン</a>
+  </p>
+</div>

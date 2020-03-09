@@ -1,7 +1,7 @@
-defmodule DailyReportWeb.GroupControllerTest do
-  use DailyReportWeb.ConnCase
+defmodule WeReportsWeb.GroupControllerTest do
+  use WeReportsWeb.ConnCase
 
-  alias DailyReport.Groups
+  alias WeReports.Groups
 
   @create_attrs %{description: "some description", name: "some name"}
   @update_attrs %{description: "some updated description", name: "some updated name"}
@@ -13,20 +13,23 @@ defmodule DailyReportWeb.GroupControllerTest do
   end
 
   describe "index" do
+    @tag :authenticated
     test "lists all groups", %{conn: conn} do
       conn = get(conn, Routes.group_path(conn, :index))
-      assert html_response(conn, 200) =~ "Listing Groups"
+      assert html_response(conn, 200) =~ "グループ一覧"
     end
   end
 
   describe "new group" do
+    @tag :authenticated
     test "renders form", %{conn: conn} do
       conn = get(conn, Routes.group_path(conn, :new))
-      assert html_response(conn, 200) =~ "New Group"
+      assert html_response(conn, 200) =~ "新規グループ作成"
     end
   end
 
   describe "create group" do
+    @tag :authenticated
     test "redirects to show when data is valid", %{conn: conn} do
       conn = post(conn, Routes.group_path(conn, :create), group: @create_attrs)
 
@@ -37,15 +40,17 @@ defmodule DailyReportWeb.GroupControllerTest do
       assert html_response(conn, 200) =~ "Show Group"
     end
 
+    @tag :authenticated
     test "renders errors when data is invalid", %{conn: conn} do
       conn = post(conn, Routes.group_path(conn, :create), group: @invalid_attrs)
-      assert html_response(conn, 200) =~ "New Group"
+      assert html_response(conn, 200) =~ "新規グループ作成"
     end
   end
 
   describe "edit group" do
     setup [:create_group]
 
+    @tag :authenticated
     test "renders form for editing chosen group", %{conn: conn, group: group} do
       conn = get(conn, Routes.group_path(conn, :edit, group))
       assert html_response(conn, 200) =~ "Edit Group"
@@ -55,6 +60,7 @@ defmodule DailyReportWeb.GroupControllerTest do
   describe "update group" do
     setup [:create_group]
 
+    @tag :authenticated
     test "redirects when data is valid", %{conn: conn, group: group} do
       conn = put(conn, Routes.group_path(conn, :update, group), group: @update_attrs)
       assert redirected_to(conn) == Routes.group_path(conn, :show, group)
@@ -63,6 +69,7 @@ defmodule DailyReportWeb.GroupControllerTest do
       assert html_response(conn, 200) =~ "some updated description"
     end
 
+    @tag :authenticated
     test "renders errors when data is invalid", %{conn: conn, group: group} do
       conn = put(conn, Routes.group_path(conn, :update, group), group: @invalid_attrs)
       assert html_response(conn, 200) =~ "Edit Group"
@@ -72,6 +79,7 @@ defmodule DailyReportWeb.GroupControllerTest do
   describe "delete group" do
     setup [:create_group]
 
+    @tag :authenticated
     test "deletes chosen group", %{conn: conn, group: group} do
       conn = delete(conn, Routes.group_path(conn, :delete, group))
       assert redirected_to(conn) == Routes.group_path(conn, :index)

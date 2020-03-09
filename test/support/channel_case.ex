@@ -1,4 +1,4 @@
-defmodule DailyReportWeb.ChannelCase do
+defmodule WeReportsWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,15 +21,15 @@ defmodule DailyReportWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint DailyReportWeb.Endpoint
+      @endpoint WeReportsWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(DailyReport.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(WeReports.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(DailyReport.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(WeReports.Repo, {:shared, self()})
     end
 
     :ok
