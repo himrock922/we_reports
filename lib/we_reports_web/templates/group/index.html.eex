@@ -1,8 +1,8 @@
 <h1>グループ一覧</h1>
 
-<span><%= link "新規作成", class: "button", to: Routes.group_path(@conn, :new) %></span>
+<span><%= link "新規作成", class: "btn btn-success", to: Routes.group_path(@conn, :new) %></span>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>グループ名</th>
