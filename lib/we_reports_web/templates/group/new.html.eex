@@ -2,4 +2,4 @@
 
 <%= render "form.html", Map.put(assigns, :action, Routes.group_path(@conn, :create)) %>
 
-<span><%= link "グループ一覧に戻る", class: "button", to: Routes.group_path(@conn, :index) %></span>
+<span><%= link "グループ一覧に戻る", class: "btn btn-outline-secondary", to: Routes.group_path(@conn, :index) %></span>

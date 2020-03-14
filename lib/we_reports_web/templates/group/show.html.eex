@@ -1,18 +1,17 @@
-<h1>Show Group</h1>
-
-<ul>
-
-  <li>
-    <strong>Name:</strong>
-    <%= @group.name %>
-  </li>
-
-  <li>
-    <strong>Description:</strong>
-    <%= @group.description %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.group_path(@conn, :edit, @group) %></span>
-<span><%= link "Back", to: Routes.group_path(@conn, :index) %></span>
+<div class="container">
+  <div class="jumbotron">
+    <h1><%= @group.name %></h1>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>グループ名:</strong>
+        <%= @group.name %>
+      </li>
+      <li class="list-group-item">
+        <strong>概要:</strong>
+        <%= @group.description %>
+     </li>
+   </ul>
+  </div>
+  <span><%= link "編集", class: "btn btn-success", to: Routes.group_path(@conn, :edit, @group) %></span>
+  <span><%= link "グループ一覧に戻る", class: "btn btn-outline-secondary", to: Routes.group_path(@conn, :index) %></span>
+</div>

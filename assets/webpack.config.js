@@ -33,10 +33,22 @@ module.exports = (env, options) => ({
         use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
-        test: /bootstrap\.native/,
-        use: {
-          loader: "bootstrap.native-loader"
-        }
+        test: require.resolve('jquery'),
+        use: [
+          {
+            loader: 'expose-loader',
+            options: '$'
+            }
+          ]
+      },
+      {
+        test: require.resolve('fuse.js'),
+        use: [
+          {
+            loader: 'expose-loader',
+            options: 'Fuse'
+            }
+          ]
       }
     ]
   }

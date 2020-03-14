@@ -6,11 +6,15 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
-    "bootstrap-css-only": "^4.4.1",
-    "bootstrap.native": "^2.0.27",
-    "bootstrap.native-loader": "^2.0.0",
+    "bootstrap": "^4.4.1",
+    "bootstrap-select-dropdown": "^0.14.6",
+    "expose-loader": "^0.7.5",
+    "fuse.js": "^5.0.1-beta",
+    "jquery": "^3.4.1",
+    "knockout": "^3.5.1",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
+    "popper.js": "^1.16.1",
     "uglify-js": "^3.8.0"
   },
   "devDependencies": {
