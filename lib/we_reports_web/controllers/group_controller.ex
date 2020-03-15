@@ -12,12 +12,12 @@ defmodule WeReportsWeb.GroupController do
 
   def new(conn, _params) do
     changeset = Groups.change_group(%Group{})
-    users = UserManager.list_users()
+    users = get_users()
     render(conn, "new.html", changeset: changeset, users: users)
   end
 
   def create(conn, %{"group" => group_params}) do
-    users = UserManager.list_users()
+    users = get_users()
     case Groups.create_group(group_params) do
       {:ok, group} ->
         conn
@@ -36,11 +36,12 @@ defmodule WeReportsWeb.GroupController do
   def edit(conn, %{"id" => id}) do
     group = Groups.get_group!(id)
     changeset = Groups.change_group(group)
-    users = UserManager.list_users()
+    users = get_users()
     render(conn, "edit.html", group: group, changeset: changeset, users: users)
   end
 
   def update(conn, %{"id" => id, "group" => group_params}) do
+    users = get_users()
     group = Groups.get_group!(id)
 
     case Groups.update_group(group, group_params) do
@@ -50,7 +51,7 @@ defmodule WeReportsWeb.GroupController do
         |> redirect(to: Routes.group_path(conn, :show, group))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", group: group, changeset: changeset)
+        render(conn, "edit.html", group: group, changeset: changeset, users: users)
     end
   end
 
@@ -62,4 +63,6 @@ defmodule WeReportsWeb.GroupController do
     |> put_flash(:info, "Group deleted successfully.")
     |> redirect(to: Routes.group_path(conn, :index))
   end
+
+  defp get_users(), do: UserManager.list_users()
 end

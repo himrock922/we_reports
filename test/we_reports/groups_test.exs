@@ -6,9 +6,9 @@ defmodule WeReports.GroupsTest do
   describe "groups" do
     alias WeReports.Groups.Group
 
-    @valid_attrs %{description: "some description", name: "some name"}
-    @update_attrs %{description: "some updated description", name: "some updated name"}
-    @invalid_attrs %{description: nil, name: nil}
+    @valid_attrs %{description: "some description", name: "some name", user: []}
+    @update_attrs %{description: "some updated description", name: "some updated name", users: []}
+    @invalid_attrs %{description: nil, name: nil, users: nil}
 
     def group_fixture(attrs \\ %{}) do
       {:ok, group} =

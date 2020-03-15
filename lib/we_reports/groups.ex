@@ -14,9 +14,7 @@ defmodule WeReports.Groups do
       [%Group{}, ...]
 
   """
-  def list_groups do
-    Repo.all(Group)
-  end
+  def list_groups, do: Repo.all(Group) |> Repo.preload(:users)
 
   @doc """
   Gets a single group.
@@ -32,7 +30,7 @@ defmodule WeReports.Groups do
       ** (Ecto.NoResultsError)
 
   """
-  def get_group!(id), do: Repo.get!(Group, id)
+  def get_group!(id), do: Repo.get!(Group, id) |> Repo.preload(:users)
 
   @doc """
   Creates a group.

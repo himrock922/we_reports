@@ -5,7 +5,7 @@ defmodule WeReportsWeb.GroupControllerTest do
 
   @create_attrs %{description: "some description", name: "some name"}
   @update_attrs %{description: "some updated description", name: "some updated name"}
-  @invalid_attrs %{description: nil, name: nil}
+  @invalid_attrs %{description: nil, name: nil, users: nil}
 
   def fixture(:group) do
     {:ok, group} = Groups.create_group(@create_attrs)
@@ -37,7 +37,7 @@ defmodule WeReportsWeb.GroupControllerTest do
       assert redirected_to(conn) == Routes.group_path(conn, :show, id)
 
       conn = get(conn, Routes.group_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show Group"
+      assert html_response(conn, 200) =~ "some name"
     end
 
     @tag :authenticated
