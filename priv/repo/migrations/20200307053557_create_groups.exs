@@ -7,9 +7,9 @@ defmodule WeReports.Repo.Migrations.CreateGroups do
     create table(:groups) do
       add :name, :string
       add :description, :text
-      add :type, StatusEnum.type()
+      add :type_name, StatusEnum.type()
       timestamps()
     end
-    create unique_index(:groups, [:type])
+    create unique_index(:groups, [:type_name])
   end
 end

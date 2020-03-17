@@ -6,14 +6,15 @@ defmodule WeReports.Groups.Group do
   schema "groups" do
     field :description, :string
     field :name, :string
-    many_to_many :users, WeReports.UserManager.User, join_through: "groups_users"
+    field :type_name, :string
+    many_to_many :users, WeReports.UserManager.User, join_through: "groups_users", on_replace: :delete
     timestamps()
   end
 
   @doc false
   def changeset(group, attrs) do
     group
-    |> cast(attrs, [:name, :description])
-    |> validate_required([:name, :description])
+    |> cast(attrs, [:name, :description, :type_name])
+    |> validate_required([:name, :description, :type_name])
   end
 end
