@@ -66,6 +66,7 @@ defmodule WeReports.Groups do
   def update_group(%Group{} = group, attrs) do
     group
     |> Group.changeset(attrs)
+    |> multiple_put_users(attrs)
     |> Repo.update()
   end
 
@@ -101,7 +102,7 @@ defmodule WeReports.Groups do
   defp multiple_put_users(changeset, []), do: changeset
 
   defp multiple_put_users(changeset, attrs) do
-    users = UserManager.get_users(attrs["users"])
+    users = UserManager.get_users(attrs["groups_users"])
     Ecto.Changeset.put_assoc(changeset, :users, users)
   end
 end

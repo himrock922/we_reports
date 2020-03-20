@@ -10,6 +10,10 @@
         <strong>概要:</strong>
         <%= @group.description %>
      </li>
+     <li class="list-group-item">
+        <strong>グループメンバー:</strong>
+        <%= Enum.map(@group.users, &(&1.username))%>
+     </li>
    </ul>
   </div>
   <span><%= link "編集", class: "btn btn-success", to: Routes.group_path(@conn, :edit, @group) %></span>

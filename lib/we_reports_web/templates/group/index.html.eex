@@ -1,6 +1,6 @@
 <h1>グループ一覧</h1>
 
-<span><%= link "新規作成", class: "btn btn-success", to: Routes.group_path(@conn, :new) %></span>
+<span><%= link "新規作成", class: "btn btn-secondary", to: Routes.group_path(@conn, :new) %></span>
 
 <table class="table">
   <thead>
@@ -17,9 +17,9 @@
         <td><%= group.name %></td>
         <td><%= group.description %></td>
         <td>
-          <span><%= link "Show", to: Routes.group_path(@conn, :show, group) %></span>
-          <span><%= link "Edit", to: Routes.group_path(@conn, :edit, group) %></span>
-          <span><%= link "Delete", to: Routes.group_path(@conn, :delete, group), method: :delete, data: [confirm: "Are you sure?"] %></span>
+          <span><%= link "詳細", to: Routes.group_path(@conn, :show, group), class: "btn btn-info" %></span>
+          <span><%= link "編集", to: Routes.group_path(@conn, :edit, group), class: "btn btn-success" %></span>
+          <span><%= link "削除", to: Routes.group_path(@conn, :delete, group), class: "btn btn-danger", method: :delete, data: [confirm: "Groupを削除します。よろしいですか?"]%></span>
         </td>
       </tr>
     <% end %>
