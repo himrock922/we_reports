@@ -64,5 +64,5 @@ defmodule WeReportsWeb.GroupController do
     |> redirect(to: Routes.group_path(conn, :index))
   end
 
-  defp get_users(), do: UserManager.list_users()
+  defp get_users, do: UserManager.list_users()
 end

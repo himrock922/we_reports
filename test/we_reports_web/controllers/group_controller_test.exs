@@ -3,9 +3,9 @@ defmodule WeReportsWeb.GroupControllerTest do
 
   alias WeReports.Groups
 
-  @create_attrs %{description: "some description", name: "some name"}
-  @update_attrs %{description: "some updated description", name: "some updated name"}
-  @invalid_attrs %{description: nil, name: nil, users: nil}
+  @create_attrs %{description: "some description", name: "some name", type_name: "sponsor"}
+  @update_attrs %{description: "some updated description", name: "some updated name", type_name: "sponsor"}
+  @invalid_attrs %{description: nil, name: nil, users: nil, type_name: "sponsor"}
 
   def fixture(:group) do
     {:ok, group} = Groups.create_group(@create_attrs)
@@ -53,7 +53,7 @@ defmodule WeReportsWeb.GroupControllerTest do
     @tag :authenticated
     test "renders form for editing chosen group", %{conn: conn, group: group} do
       conn = get(conn, Routes.group_path(conn, :edit, group))
-      assert html_response(conn, 200) =~ "Edit Group"
+      assert html_response(conn, 200) =~ "グループ編集"
     end
   end
 
@@ -72,7 +72,7 @@ defmodule WeReportsWeb.GroupControllerTest do
     @tag :authenticated
     test "renders errors when data is invalid", %{conn: conn, group: group} do
       conn = put(conn, Routes.group_path(conn, :update, group), group: @invalid_attrs)
-      assert html_response(conn, 200) =~ "Edit Group"
+      assert html_response(conn, 200) =~ "グループ編集"
     end
   end
 

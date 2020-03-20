@@ -99,8 +99,6 @@ defmodule WeReports.Groups do
     Group.changeset(group, %{})
   end
 
-  defp multiple_put_users(changeset, []), do: changeset
-
   defp multiple_put_users(changeset, attrs) do
     users = UserManager.get_users(attrs["groups_users"])
     Ecto.Changeset.put_assoc(changeset, :users, users)
