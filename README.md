@@ -1,3 +1,5 @@
+https://travis-ci.org/himrock922/we_reports.svg?branch=master
+
 # WeReports
 
 WeReportsは日々の作業を報告する日報をWebブラウザの操作を通じて提出できるWebアプリケーションです。
