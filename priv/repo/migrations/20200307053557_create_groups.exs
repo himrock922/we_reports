@@ -10,6 +10,8 @@ defmodule WeReports.Repo.Migrations.CreateGroups do
       add :type_name, StatusEnum.type()
       timestamps()
     end
-    create unique_index(:groups, [:type_name])
+    create index(:groups, [:name])
+    create index(:groups, [:type_name])
+    create index(:groups, [:name, :type_name])
   end
 end
