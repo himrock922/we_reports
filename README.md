@@ -1,20 +1,18 @@
 # WeReports
 
-To start your Phoenix server:
+WeReportsは日々の作業を報告する日報をWebブラウザの操作を通じて提出できるWebアプリケーションです。
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+## 各使用言語・ライブラリのバージョン
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+* Elixir 1.9.4
+* Erlang 10.6.4
+* Phoenix ~> 1.4.11
+* PostgreSQL 12.1
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## Contribute
 
-## Learn more
+The gem is available as open source under the terms of the [MIT License](https://github.com/himrock922/weports/blob/master/LICENSE).
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+## Code of Conduct
+
+Everyone interacting in the weports project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/himrock922/weports/blob/master/CODE_OF_CONDUCT.md).
