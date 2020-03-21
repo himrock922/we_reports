@@ -13,8 +13,8 @@ WeReportsは日々の作業を報告する日報をWebブラウザの操作を�
 
 ## Contribute
 
-The gem is available as open source under the terms of the [MIT License](https://github.com/himrock922/weports/blob/master/LICENSE).
+The gem is available as open source under the terms of the [MIT License](https://github.com/himrock922/we_reports/blob/master/LICENSE).
 
 ## Code of Conduct
 
-Everyone interacting in the weports project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/himrock922/weports/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the weports project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/himrock922/we_rports/blob/master/CODE_OF_CONDUCT.md).
