@@ -1,4 +1,4 @@
-https://travis-ci.org/himrock922/we_reports.svg?branch=master
+[![Build Status](https://travis-ci.org/himrock922/we_reports.svg?branch=master)](https://travis-ci.org/himrock922/we_reports)
 
 # WeReports
 
