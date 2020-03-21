@@ -1,0 +1,8 @@
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" href="<%= Routes.page_path(@conn, :index) %>">WeReports</a>
+  <ul class="nav justify-content-end">
+    <%= if logged_in?(@conn) do %>
+      <li class="nav-item"><a class="btn btn-dark" href="<%= Routes.session_path(@conn, :logout) %>">ログアウト</a></li>
+    <% end %>
+  </ul>
+</section>

@@ -1,9 +1,9 @@
-defmodule DailyReport.MixProject do
+defmodule WeReports.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :daily_report,
+      app: :we_reports,
       version: "0.1.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -20,7 +20,7 @@ defmodule DailyReport.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {DailyReport.Application, []},
+      mod: {WeReports.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -38,6 +38,7 @@ defmodule DailyReport.MixProject do
       {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
       {:comeonin, "~> 5.1.0"},
       {:dialyxir, "~> 1.0.0-rc.7", only: [:dev, :test], runtime: false},
+      {:ecto_enum, "~> 1.4"},
       {:phoenix, "~> 1.4.11"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},

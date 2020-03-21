@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>グループ一覧</h1>
+  <%= if get_flash(@conn, :success) do %>
+  　<div class="row">
+      <p class="col-12 alert alert-success" role="alert"><%= get_flash(@conn, :success) %></p>
+    </div>
+  <% end %>
+  <span><%= link "新規作成", class: "btn btn-secondary", to: Routes.group_path(@conn, :new) %></span>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>グループ名</th>
+        <th>概要</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for group <- @groups do %>
+        <tr>
+          <td><%= group.name %></td>
+          <td><%= group.description %></td>
+          <td>
+            <span><%= link "詳細", to: Routes.group_path(@conn, :show, group), class: "btn btn-info" %></span>
+            <span><%= link "編集", to: Routes.group_path(@conn, :edit, group), class: "btn btn-success" %></span>
+            <span><%= link "削除", to: Routes.group_path(@conn, :delete, group), class: "btn btn-danger", method: :delete, data: [confirm: "Groupを削除します。よろしいですか?"]%></span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
