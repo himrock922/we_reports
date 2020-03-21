@@ -1,0 +1,28 @@
+<div class="container">
+  <%= if get_flash(@conn, :success) do %>
+  　<div class="row">
+      <p class="col-12 alert alert-success" role="alert"><%= get_flash(@conn, :success) %></p>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="jumbotron col-12">
+      <h1><%= @group.name %></h1>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>グループ名:</strong>
+          <%= @group.name %>
+        </li>
+        <li class="list-group-item">
+          <strong>概要:</strong>
+          <%= @group.description %>
+       </li>
+       <li class="list-group-item">
+          <strong>グループメンバー:</strong>
+          <%= Enum.map(@group.users, &(&1.username))%>
+       </li>
+     </ul>
+    </div>
+  </div>
+  <span><%= link "編集", class: "btn btn-success", to: Routes.group_path(@conn, :edit, @group) %></span>
+  <span><%= link "グループ一覧に戻る", class: "btn btn-outline-secondary", to: Routes.group_path(@conn, :index) %></span>
+</div>

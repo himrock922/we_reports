@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :daily_report,
-  ecto_repos: [DailyReport.Repo]
+config :we_reports,
+  ecto_repos: [WeReports.Repo]
 
 # Configures the endpoint
-config :daily_report, DailyReportWeb.Endpoint,
+config :we_reports, WeReportsWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "jRjf4mneV44QOyJ2g5DsII6xCWf/r60TB578wCCtgc5/v8xt7t8hhOum5v823owM",
-  render_errors: [view: DailyReportWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: DailyReport.PubSub, adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: WeReportsWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: WeReports.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -28,3 +28,5 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+config :gettext, :default_locale, "ja"

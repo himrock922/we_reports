@@ -31,11 +31,25 @@ module.exports = (env, options) => ({
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: require.resolve('jquery'),
+        use: [
+          {
+            loader: 'expose-loader',
+            options: '$'
+            }
+          ]
+      },
+      {
+        test: require.resolve('fuse.js'),
+        use: [
+          {
+            loader: 'expose-loader',
+            options: 'Fuse'
+            }
+          ]
       }
     ]
-  },
-  plugins: [
-    new MiniCssExtractPlugin({ filename: '../css/app.css' }),
-    new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
-  ]
+  }
 });

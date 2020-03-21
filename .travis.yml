@@ -1,0 +1,30 @@
+language: elixir
+sudo: false
+otp_release:
+  - 22.2.1
+elixir:
+  - 1.9.4
+services:
+  - postgresql
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
+env:
+  global:
+  - PGPORT=5432
+  - MIX_ENV=test
+cache:
+  directories:
+    - _build
+    - deps
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/travis.exs config/test.exs
+  - mix do ecto.create, ecto.migrate
+script:
+  - mix credo --strict --ignore design
+  - mix dialyzer --halt-exit-status
+  - mix test

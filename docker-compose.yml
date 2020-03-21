@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: mix phx.server
+    command: iex -S mix phx.server
     volumes:
       - .:/usr/local/phoenix
     links: [db]
@@ -15,8 +15,8 @@ services:
   db:
     image: postgres:latest
     environment:
-      - POSTGRES_USER=daily_report
-      - POSTGRES_PASSWORD=daily_report
-      - POSTGRES_DB=daily_report_dev
+      - POSTGRES_USER=we_reports
+      - POSTGRES_PASSWORD=we_reports
+      - POSTGRES_DB=we_reports_dev
     ports:
       - 5432:5432

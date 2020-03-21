@@ -1,10 +1,10 @@
 use Mix.Config
 
 # Configure your database
-config :daily_report, DailyReport.Repo,
-  username: "daily_report",
-  password: "daily_report",
-  database: "daily_report_dev",
+config :we_reports, WeReports.Repo,
+  username: "we_reports",
+  password: "we_reports",
+  database: "we_reports_dev",
   hostname: "db",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -15,7 +15,7 @@ config :daily_report, DailyReport.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :daily_report, DailyReportWeb.Endpoint,
+config :we_reports, WeReportsWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -55,13 +55,13 @@ config :daily_report, DailyReportWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :daily_report, DailyReportWeb.Endpoint,
+config :we_reports, WeReportsWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/daily_report_web/{live,views}/.*(ex)$",
-      ~r"lib/daily_report_web/templates/.*(eex)$"
+      ~r"lib/we_reports_web/{live,views}/.*(ex)$",
+      ~r"lib/we_reports_web/templates/.*(eex)$"
     ]
   ]
 
@@ -74,3 +74,7 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :we_reports, WeReports.UserManager.Guardian,
+       issuer: "we_reports",
+       secret_key: "LNIC2ISLo6f7FyXfai+rViERcEiuDYhJwR+C1fK6JqByBkJDuVBliJSDj1iNaO7R"

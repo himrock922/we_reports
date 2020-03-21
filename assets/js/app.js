@@ -1,17 +1,6 @@
-// We need to import the CSS so that webpack will load it.
-// The MiniCssExtractPlugin is used to separate it out into
-// its own CSS file.
-import css from "../css/app.css"
-
-// webpack automatically bundles all modules in your
-// entry points. Those entry points can be configured
-// in "webpack.config.js".
-//
-// Import dependencies
-//
+import 'jquery/dist/jquery.slim.min';
+import 'fuse.js/dist/fuse';
+import 'popper.js/dist/popper.min';
+import 'bootstrap/dist/js/bootstrap.min';
+import 'bootstrap-select-dropdown/dist/bootstrap-select-dropdown.min';
 import "phoenix_html"
-
-// Import local files
-//
-// Local files can be imported directly using relative paths, for example:
-// import socket from "./socket"
