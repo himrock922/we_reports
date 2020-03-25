@@ -5,7 +5,7 @@ defmodule WeReportsWeb.PropositionController do
   alias WeReports.Propositions
   alias WeReports.Propositions.Proposition
   import Ecto
-  
+
   def index(conn, %{"group_id" => group_id}) do
     group = Propositions.list_propositions(group_id)
     render(conn, "index.html", group: group)

@@ -4,9 +4,7 @@ defmodule WeReports.Propositions do
   """
 
   import Ecto.Query, warn: false
-  alias WeReports.Repo
-  alias WeReports.Propositions.Proposition
-  alias WeReports.Groups.Group
+  alias WeReports.{Groups.Group, Propositions.Proposition, Repo}
 
   @doc """
   Returns the list of propositions.
