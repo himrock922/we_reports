@@ -1,0 +1,23 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <fieldset>
+    <%= if @changeset.action do %>
+      <div class="alert alert-danger">
+        <p>案件の作成に失敗しました。エラー部分を修正し再度案件の作成をお願いします。</p>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= label f, :name, "案件名"%>
+      <%= text_input f, :name, class: "form-control" %>
+      <%= error_tag f, :name %>
+    </div>
+    <div class="form-group">
+      <%= label f, :description, "案件詳細" %>
+      <%= textarea f, :description, class: "form-control" %>
+      <%= error_tag f, :description %>
+    </div>
+    <%= hidden_input f, :group_id %>
+    <div class="form-group">
+      <%= submit "保存", class: "btn btn-primary" %>
+    </div>
+  </fieldset>
+<% end %>

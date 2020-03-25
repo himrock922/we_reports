@@ -30,7 +30,7 @@ defmodule WeReports.Groups do
       ** (Ecto.NoResultsError)
 
   """
-  def get_group!(id), do: Repo.get!(Group, id) |> Repo.preload(:users)
+  def get_group!(id), do: Repo.get!(Group, id) |> Repo.preload(:users) |> Repo.preload(:propositions)
 
   @doc """
   Creates a group.
