@@ -3,7 +3,6 @@ defmodule WeReportsWeb.PropositionController do
 
   alias WeReports.Groups
   alias WeReports.Propositions
-  alias WeReports.Propositions.Proposition
 
   def index(conn, %{"group_id" => group_id}) do
     group = Propositions.list_propositions(group_id)

@@ -33,7 +33,7 @@ defmodule WeReportsWeb.PropositionControllerTest do
     @tag :authenticated
     test "グループが存在しなければ案件一覧のアクセスに失敗", %{conn: conn} do
       conn = get(conn, Routes.group_proposition_path(conn, :index, 0))
-      assert html_response(conn, 404) =~ "Page not found"
+      assert html_response(conn, 404) =~ "Not Found"
     end
   end
 
