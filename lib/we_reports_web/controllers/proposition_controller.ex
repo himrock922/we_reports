@@ -6,52 +6,46 @@ defmodule WeReportsWeb.PropositionController do
   alias WeReports.Propositions.Proposition
 
   def index(conn, %{"group_id" => group_id}) do
-    try do
-      group = Propositions.list_propositions(group_id)
-      render(conn, "index.html", group: group)
-    rescue
-      Ecto.NoResultsError ->
-        put_status(conn, :not_found)
-        |> put_layout(false)
-        |> put_view(WeReportsWeb.ErrorView)
-        |> render("404.html", %{})
-    end
+    group = Propositions.list_propositions(group_id)
+    render(conn, "index.html", group: group)
+  rescue
+    Ecto.NoResultsError ->
+      put_status(conn, :not_found)
+      |> put_layout(false)
+      |> put_view(WeReportsWeb.ErrorView)
+      |> render("404.html", %{})
   end
 
   def new(conn, %{"group_id" => group_id}) do
-    try do
-      group = Groups.get_group!(group_id)
-      changeset =
-        Ecto.build_assoc(group, :propositions)
-        |> WeReports.Propositions.Proposition.changeset(%{})
-      render(conn, "new.html", changeset: changeset, group: group)
-    rescue
-      Ecto.NoResultsError ->
-        put_status(conn, :not_found)
-        |> put_layout(false)
-        |> put_view(WeReportsWeb.ErrorView)
-        |> render("404.html", %{})
-    end
+    group = Groups.get_group!(group_id)
+    changeset =
+      Ecto.build_assoc(group, :propositions)
+      |> WeReports.Propositions.Proposition.changeset(%{})
+    render(conn, "new.html", changeset: changeset, group: group)
+  rescue
+    Ecto.NoResultsError ->
+      put_status(conn, :not_found)
+      |> put_layout(false)
+      |> put_view(WeReportsWeb.ErrorView)
+      |> render("404.html", %{})
   end
 
   def create(conn, %{"proposition" => proposition_params}) do
-    try do
-      group = Groups.get_group!(proposition_params["group_id"])
-      case Propositions.create_proposition(proposition_params) do
-        {:ok, proposition} ->
-          conn
-          |> put_flash(:success, "案件の作成に成功しました。")
-          |> redirect(to: Routes.group_proposition_path(conn, :show, proposition.group_id, proposition))
-        {:error, %Ecto.Changeset{} = changeset} ->
-          render(conn, "new.html", changeset: changeset, group: group)
-      end
-    rescue
-      Ecto.NoResultsError ->
-        put_status(conn, :not_found)
-        |> put_layout(false)
-        |> put_view(WeReportsWeb.ErrorView)
-        |> render("404.html", %{})
+    group = Groups.get_group!(proposition_params["group_id"])
+    case Propositions.create_proposition(proposition_params) do
+      {:ok, proposition} ->
+        conn
+        |> put_flash(:success, "案件の作成に成功しました。")
+        |> redirect(to: Routes.group_proposition_path(conn, :show, proposition.group_id, proposition))
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "new.html", changeset: changeset, group: group)
     end
+  rescue
+    Ecto.NoResultsError ->
+      put_status(conn, :not_found)
+      |> put_layout(false)
+      |> put_view(WeReportsWeb.ErrorView)
+      |> render("404.html", %{})
   end
 
   def show(conn, %{"id" => id}) do
