@@ -7,7 +7,6 @@ defmodule WeReports.Propositions.Proposition do
     field :description, :string
     field :name, :string
     belongs_to :group, WeReports.Groups.Group
-    has_many :items, WeReports.Items.Item, on_delete: :delete_all
     timestamps()
   end
 
