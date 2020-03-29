@@ -25,7 +25,9 @@ defmodule WeReports.GroupsTest do
     end
 
     test "get_group!/1 returns the group with given id" do
-      group = group_fixture()
+      group =
+        group_fixture()
+        |> Repo.preload(:propositions)
       assert Groups.get_group!(group.id) == group
     end
 
@@ -47,7 +49,9 @@ defmodule WeReports.GroupsTest do
     end
 
     test "update_group/2 with invalid data returns error changeset" do
-      group = group_fixture()
+      group =
+        group_fixture()
+        |> Repo.preload(:propositions)
       assert {:error, %Ecto.Changeset{}} = Groups.update_group(group, @invalid_attrs)
       assert group == Groups.get_group!(group.id)
     end

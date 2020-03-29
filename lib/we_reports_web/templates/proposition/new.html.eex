@@ -1,0 +1,5 @@
+<div class="container">
+  <h1><%= "#{@group.name}" %>に関する案件の新規作成</h1>
+  <%= render "form.html", Map.put(assigns, :action, Routes.group_proposition_path(@conn, :create, @group.id)) %>
+ <span><%= link "グループ詳細に戻る", class: "btn btn-outline-secondary", to: Routes.group_proposition_path(@conn, :index, @group.id) %></span>
+</div>

@@ -15,14 +15,19 @@
         <li class="list-group-item">
           <strong>概要:</strong>
           <%= @group.description %>
-       </li>
-       <li class="list-group-item">
+        </li>
+        <li class="list-group-item">
           <strong>グループメンバー:</strong>
-          <%= Enum.map(@group.users, &(&1.username))%>
-       </li>
+          <%= IO.inspect(Enum.map(@group.users, fn(u)-> "#{u.username}, " end))%>
+        </li>
+        <li class="list-group-item">
+          <strong>案件:</strong>
+          <%= IO.inspect(Enum.map(@group.propositions, fn(p)-> "#{p.name}, " end))%>
+        </li>
      </ul>
     </div>
   </div>
-  <span><%= link "編集", class: "btn btn-success", to: Routes.group_path(@conn, :edit, @group) %></span>
+  <span><%= link "案件一覧", class: "btn btn-warning", to: Routes.group_proposition_path(@conn, :index, @group.id) %></span>
+  <span><%= link "グループの編集", class: "btn btn-success", to: Routes.group_path(@conn, :edit, @group) %></span>
   <span><%= link "グループ一覧に戻る", class: "btn btn-outline-secondary", to: Routes.group_path(@conn, :index) %></span>
 </div>

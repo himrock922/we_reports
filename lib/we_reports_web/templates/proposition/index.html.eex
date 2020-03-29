@@ -1,0 +1,32 @@
+<div class="container">
+  <h1><%= "#{@group.name}" %>の案件一覧</h1>
+  <%= if get_flash(@conn, :success) do %>
+  　<div class="row">
+      <p class="col-12 alert alert-success" role="alert"><%= get_flash(@conn, :success) %></p>
+    </div>
+  <% end %>
+  <span><%= link "案件の作成", class: "btn btn-primary", to: Routes.group_proposition_path(@conn, :new, @group.id) %></span>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>案件名</th>
+        <th>案件詳細</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for proposition <- @group.propositions do %>
+        <tr>
+          <td><%= proposition.name %></td>
+          <td><%= proposition.description %></td>
+          <td>
+            <span><%= link "詳細", to: Routes.group_proposition_path(@conn, :show, @group.id, proposition), class: "btn btn-info" %></span>
+            <span><%= link "編集", to: Routes.group_proposition_path(@conn, :edit, @group.id, proposition), class: "btn btn-success" %></span>
+            <span><%= link "削除", to: Routes.group_proposition_path(@conn, :delete, @group.id, proposition), class: "btn btn-danger", method: :delete, data: [confirm: "案件を削除します。よろしいですか"] %></span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+   <span><%= link "グループ詳細に戻る", class: "btn btn-outline-secondary", to: Routes.group_path(@conn, :show, @group.id) %></span>
+</div>
