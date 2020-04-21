@@ -1,0 +1,5 @@
+<h1>Edit Daily report</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.daily_report_path(@conn, :update, @daily_report)) %>
+
+<span><%= link "Back", to: Routes.daily_report_path(@conn, :index) %></span>

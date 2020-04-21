@@ -1,0 +1,33 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <button type="button" class="btn btn-success">新規作業項目の追加</button>
+  </div>
+
+  <%= label f, :title, "作業項目" %>
+  <%= select f, :title, Enum.flat_map(@groups, fn(g) -> Enum.map(g.propositions, fn(p) -> {"#{g.name} / #{p.name}", p.id} end) end), class: "form-control" %>
+　
+  <div class="form-group" id="articles_area">
+  </div>
+
+  <div class="form-group">
+    <%= label f, :next_action, "次回やること" %>
+    <%= textarea f, :next_action, class: "form-control" %>
+    <%= error_tag f, :next_action %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :summary, "まとめ"%>
+    <%= textarea f, :summary, class: "form-control" %>
+    <%= error_tag f, :summary %>
+  </div>
+
+  <div>
+    <%= submit "日報を提出", class: "btn btn-primary" %>
+  </div>
+<% end %>

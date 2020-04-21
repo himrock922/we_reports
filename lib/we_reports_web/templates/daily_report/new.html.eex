@@ -1,0 +1,5 @@
+<div class="container">
+  <h1>日報新規作成</h1>
+  <%= render "form.html", Map.put(assigns, :action, Routes.daily_report_path(@conn, :create)) %>
+  <span><%= link "日報一覧に戻る", class: "btn btn-outline-secondary", to: Routes.daily_report_path(@conn, :index) %></span>
+</div>

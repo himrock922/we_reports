@@ -43,6 +43,8 @@ defmodule WeReports.UserManager do
     Repo.all(from u in User, where: u.id in ^ids)
   end
 
+  def get_user_groups(id), do: Repo.get!(User, id) |> Repo.preload([groups: :propositions])
+
   @doc """
   Creates a user.
 

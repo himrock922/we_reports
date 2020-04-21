@@ -1,0 +1,18 @@
+<h1>Show Daily report</h1>
+
+<ul>
+
+  <li>
+    <strong>Next action:</strong>
+    <%= @daily_report.next_action %>
+  </li>
+
+  <li>
+    <strong>Summary:</strong>
+    <%= @daily_report.summary %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.daily_report_path(@conn, :edit, @daily_report) %></span>
+<span><%= link "Back", to: Routes.daily_report_path(@conn, :index) %></span>
