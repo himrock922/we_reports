@@ -1,0 +1,24 @@
+<div class="container">
+  <%= if get_flash(@conn, :success) do %>
+  　<div class="row">
+      <p class="col-12 alert alert-success" role="alert"><%= get_flash(@conn, :success) %></p>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="jumbotron col-12">
+      <h1><%= @proposition.name %></h1>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>関係するグループ名:</strong>
+          <%= @proposition.group.name %>
+        </li>
+        <li class="list-group-item">
+          <strong>概要:</strong>
+          <%= @proposition.description %>
+        </li>
+     </ul>
+    </div>
+  </div>
+</div>
+<span><%= link "案件の編集", class: "btn btn-success", to: Routes.group_proposition_path(@conn, :edit, @proposition.group_id, @proposition) %></span>
+<span><%= link "案件一覧に戻る", class: "btn btn-outline-secondary", to: Routes.group_proposition_path(@conn, :index, @proposition.group_id) %></span>

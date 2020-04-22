@@ -35,7 +35,10 @@ defmodule WeReportsWeb.Router do
 
   scope "/", WeReportsWeb do
     pipe_through [:browser, :auth, :ensure_auth]
-    resources "/groups", GroupController
+    resources "/groups", GroupController do
+      resources "/propositions", PropositionController do
+      end
+    end
   end
 
   # Other scopes may use custom stacks.
