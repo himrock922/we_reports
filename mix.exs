@@ -39,7 +39,7 @@ defmodule WeReports.MixProject do
       {:comeonin, "~> 5.1.0"},
       {:dialyxir, "~> 1.0.0-rc.7", only: [:dev, :test], runtime: false},
       {:ecto_enum, "~> 1.4"},
-      {:phoenix, "~> 1.4.11"},
+      {:phoenix, "~> 1.4.17"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
