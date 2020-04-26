@@ -15,7 +15,7 @@ config :we_reports, WeReportsWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "jRjf4mneV44QOyJ2g5DsII6xCWf/r60TB578wCCtgc5/v8xt7t8hhOum5v823owM",
   render_errors: [view: WeReportsWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: WeReports.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: WeReportsWeb.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,

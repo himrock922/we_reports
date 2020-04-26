@@ -39,9 +39,10 @@ defmodule WeReports.MixProject do
       {:comeonin, "~> 5.1.0"},
       {:dialyxir, "~> 1.0.0-rc.7", only: [:dev, :test], runtime: false},
       {:ecto_enum, "~> 1.4"},
-      {:phoenix, "~> 1.4.17"},
-      {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix, "~> 1.5.0"},
       {:phoenix_ecto, "~> 4.0"},
+      {:phoenix_pubsub, "~> 2.0"},
+      {:plug_cowboy, "~> 2.1"},
       {:ecto_sql, "~> 3.1"},
       {:guardian, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
@@ -49,7 +50,6 @@ defmodule WeReports.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
     ]
   end
 
