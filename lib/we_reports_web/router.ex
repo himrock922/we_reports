@@ -5,6 +5,7 @@ defmodule WeReportsWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
+    plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -38,7 +39,8 @@ defmodule WeReportsWeb.Router do
     resources "/groups", GroupController do
       resources "/propositions", PropositionController
     end
-    resources "/daily_reports", DailyReportController
+    live "/daily_reports/new", DailyReports.New
+    resources "/daily_reports", DailyReportController, only: [:index, :show, :delete]
     resources "/articles", ArticleController, except: [:new, :edit]
   end
 
