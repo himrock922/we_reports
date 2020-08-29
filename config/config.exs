@@ -12,10 +12,10 @@ config :we_reports,
 
 # Configures the endpoint
 config :we_reports, WeReportsWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "127.0.0.1"],
   secret_key_base: "jRjf4mneV44QOyJ2g5DsII6xCWf/r60TB578wCCtgc5/v8xt7t8hhOum5v823owM",
   render_errors: [view: WeReportsWeb.ErrorView, accepts: ~w(html json)],
-  pubsub_server: WeReportsWeb.PubSub,
+  pubsub_server: WeReports.PubSub,
   live_view: [signing_salt: "Cr6WEgZcclgy4D9F412DHpFDyW+iUmsF"]
 
 # Configures Elixir's Logger

@@ -8,6 +8,7 @@ defmodule WeReports.UserManager.User do
     field :password, :string
     field :username, :string
     many_to_many :groups, WeReports.Groups.Group, join_through: "groups_users"
+    has_many :daily_reports, WeReports.DailyReports.DailyReport, on_delete: :delete_all
     timestamps()
   end
 

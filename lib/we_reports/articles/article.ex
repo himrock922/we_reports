@@ -13,7 +13,6 @@ defmodule WeReports.Articles.Article do
   @doc false
   def changeset(article, attrs) do
     article
-    |> cast(attrs, [:work_time, :body, :proposition])
-    |> validate_required([:work_time, :body, :proposition])
+    |> cast(attrs, [:title, :body, :work_time])
   end
 end

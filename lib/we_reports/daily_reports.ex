@@ -21,6 +21,9 @@ defmodule WeReports.DailyReports do
     Repo.all(DailyReport)
   end
 
+  def list_daily_reports(user_id) do
+    Repo.all(from d in DailyReport, where: d.user_id == ^user_id)
+  end
   @doc """
   Gets a single daily_report.
 
@@ -55,6 +58,7 @@ defmodule WeReports.DailyReports do
     |> Repo.insert()
   end
 
+  def list_articles, do: Repo.preload(:articles)
   @doc """
   Updates a daily_report.
 

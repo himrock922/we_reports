@@ -7,13 +7,14 @@ defmodule WeReports.DailyReports.DailyReport do
     field :memo, :string
     field :summary, :string
     many_to_many :articles, WeReports.Articles.Article, join_through: "articles_daily_reports", on_replace: :delete, on_delete: :delete_all
+    belongs_to :user, WeReports.UserManager.User
     timestamps()
   end
 
   @doc false
   def changeset(daily_report, attrs) do
     daily_report
-    |> cast(attrs, [:memo, :summary])
-    |> validate_required([:memo, :summary])
+    |> cast(attrs, [:reporting_date, :memo, :summary, :user_id])
+    |> validate_required([:user_id])
   end
 end

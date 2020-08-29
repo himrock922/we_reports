@@ -1,28 +1,26 @@
-<h1>Listing Daily reports</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Next action</th>
-      <th>Summary</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for daily_report <- @daily_reports do %>
-    <tr>
-      <td><%= daily_report.next_action %></td>
-      <td><%= daily_report.summary %></td>
-
-      <td>
-        <span><%= link "Show", to: Routes.daily_report_path(@conn, :show, daily_report) %></span>
-        <span><%= link "Edit", to: Routes.daily_report_path(@conn, :edit, daily_report) %></span>
-        <span><%= link "Delete", to: Routes.daily_report_path(@conn, :delete, daily_report), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<span><%= live_redirect "日報の新規作成", to: Routes.live_path(@conn, WeReportsWeb.DailyReports.New) %></span>
+<div class="container">
+  <h1>日報一覧</h1>
+  <span><%= live_redirect "日報の新規作成", to: Routes.live_path(@conn, WeReportsWeb.DailyReports.New, user: @user), class: "btn btn-primary" %></span>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>日報タイトル</th>
+        <th>提出日付</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for daily_report <- @daily_reports do %>
+        <tr>
+          <td><%= daily_report.id %></td>
+          <td></td>
+          <td>
+            <span><%= link "詳細", to: Routes.daily_report_path(@conn, :show, daily_report), class: "btn btn-info" %></span>
+            <span><%= link "編集", to: Routes.daily_report_path(@conn, :edit, daily_report), class: "btn btn-success" %></span>
+            <span><%= link "削除", to: Routes.daily_report_path(@conn, :delete, daily_report), class: "btn btn-danger", method: :delete, data: [confirm: "日報を削除します。よろしいですか?"] %></span>
+          </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

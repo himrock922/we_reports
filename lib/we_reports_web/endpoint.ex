@@ -1,11 +1,12 @@
 defmodule WeReportsWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :we_reports
 
+  socket "/live", Phoenix.LiveView.Socket, websocket: true
+
   socket "/socket", WeReportsWeb.UserSocket,
     websocket: true,
     longpoll: false
 
-   socket "/live", Phoenix.LiveView.Socket, websocket: true
 
   # Serve at "/" the static files from "priv/static" directory.
   #

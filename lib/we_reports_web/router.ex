@@ -40,7 +40,10 @@ defmodule WeReportsWeb.Router do
       resources "/propositions", PropositionController
     end
     live "/daily_reports/new", DailyReports.New
-    resources "/daily_reports", DailyReportController, only: [:index, :show, :delete]
+    get "/daily_reports", DailyReportController, :index
+    get "/daily_reports/:id", DailyReportController, :show
+    get "/daily_reports/:id/edit", DailyReportController, :edit
+    delete "/daily_reports/:id", DailyReportController, :delete
     resources "/articles", ArticleController, except: [:new, :edit]
   end
 

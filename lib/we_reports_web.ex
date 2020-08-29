@@ -48,7 +48,6 @@ defmodule WeReportsWeb do
 
   def live_view do
     quote do
-      import WeReports.UserManager.Guardian, only: [current_user: 1, logged_in?: 1]
       unquote(view_helpers())
     end
   end

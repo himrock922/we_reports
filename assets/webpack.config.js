@@ -1,5 +1,6 @@
 const path = require('path');
 const glob = require('glob');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -12,6 +13,13 @@ module.exports = (env, options) => ({
       new OptimizeCSSAssetsPlugin({})
     ]
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+       $: "jquery",
+       jQuery: "jquery",
+       moment: "moment"
+   })
+  ],
   entry: {
     './js/app.js': glob.sync('./vendor/**/*.js').concat(['./js/app.js'])
   },
@@ -40,6 +48,12 @@ module.exports = (env, options) => ({
             options: '$'
             }
           ]
+      },
+      {
+        test: /\.(svg|eot|woff|woff2|ttf)$/,
+        use: {
+          loader: 'file-loader'
+        }
       },
       {
         test: require.resolve('fuse.js'),

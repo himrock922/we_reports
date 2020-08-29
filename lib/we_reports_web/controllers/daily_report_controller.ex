@@ -9,16 +9,9 @@ defmodule WeReportsWeb.DailyReportController do
   require IEx
 
   def index(conn, _params) do
-    daily_reports = DailyReports.list_daily_reports()
-    render(conn, "index.html", daily_reports: daily_reports)
-  end
-
-  def new(conn, _params) do
-    current_user = Guardian.current_user(conn)
-    group_lists = get_user_groups(current_user.id)
-
-    changeset = DailyReports.change_daily_report(%DailyReport{})
-    render(conn, "new.html", changeset: changeset, groups: group_lists.groups)
+    user = Guardian.current_user(conn)
+    daily_reports = DailyReports.list_daily_reports(user.id)
+    render(conn, "index.html", daily_reports: daily_reports, user: user)
   end
 
   def create(conn, %{"daily_report" => daily_report_params}) do
