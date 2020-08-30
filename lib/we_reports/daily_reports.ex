@@ -7,7 +7,8 @@ defmodule WeReports.DailyReports do
   alias WeReports.Repo
 
   alias WeReports.DailyReports.DailyReport
-
+  alias WeReports.ArticlesDailyReports
+  alias WeReports.Articles.Article
   @doc """
   Returns the list of daily_reports.
 
@@ -38,7 +39,7 @@ defmodule WeReports.DailyReports do
       ** (Ecto.NoResultsError)
 
   """
-  def get_daily_report!(id), do: Repo.get!(DailyReport, id)
+  def get_daily_report!(id), do: Repo.get!(DailyReport, id) |> Repo.preload(:articles)
 
   @doc """
   Creates a daily_report.
@@ -90,7 +91,14 @@ defmodule WeReports.DailyReports do
 
   """
   def delete_daily_report(%DailyReport{} = daily_report) do
+    articles_daily_reports = Repo.all(from(a in ArticlesDailyReports, where: a.daily_report_id == ^daily_report.id))
+    articles_ids = Enum.map(articles_daily_reports, fn articles_daily_report -> articles_daily_report.article_id end)
     Repo.delete(daily_report)
+    Enum.map(articles_ids, fn(a) ->
+      article = Repo.get!(Article, a)
+      Repo.delete(article)
+    end)
+    {:ok, %DailyReport{}}
   end
 
   @doc """
