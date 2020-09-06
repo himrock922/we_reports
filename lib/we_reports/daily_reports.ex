@@ -9,6 +9,7 @@ defmodule WeReports.DailyReports do
   alias WeReports.DailyReports.DailyReport
   alias WeReports.ArticlesDailyReports
   alias WeReports.Articles.Article
+  alias WeReports.Articles
   @doc """
   Returns the list of daily_reports.
 
@@ -18,9 +19,7 @@ defmodule WeReports.DailyReports do
       [%DailyReport{}, ...]
 
   """
-  def list_daily_reports do
-    Repo.all(DailyReport)
-  end
+  def list_daily_reports, do: Repo.all(DailyReport) |> Repo.preload(:user)
 
   def list_daily_reports(user_id) do
     Repo.all(from d in DailyReport, where: d.user_id == ^user_id)
@@ -91,14 +90,7 @@ defmodule WeReports.DailyReports do
 
   """
   def delete_daily_report(%DailyReport{} = daily_report) do
-    articles_daily_reports = Repo.all(from(a in ArticlesDailyReports, where: a.daily_report_id == ^daily_report.id))
-    articles_ids = Enum.map(articles_daily_reports, fn articles_daily_report -> articles_daily_report.article_id end)
     Repo.delete(daily_report)
-    Enum.map(articles_ids, fn(a) ->
-      article = Repo.get!(Article, a)
-      Repo.delete(article)
-    end)
-    {:ok, %DailyReport{}}
   end
 
   @doc """
@@ -113,4 +105,9 @@ defmodule WeReports.DailyReports do
   def change_daily_report(%DailyReport{} = daily_report) do
     DailyReport.changeset(daily_report, %{})
   end
+
+  def change_article(%Article{} = article) do
+    Article.changeset(article, %{})
+  end
+
 end

@@ -10,7 +10,7 @@ defmodule WeReportsWeb.DailyReportController do
 
   def index(conn, _params) do
     user = Guardian.current_user(conn)
-    daily_reports = DailyReports.list_daily_reports(user.id)
+    daily_reports = DailyReports.list_daily_reports
     render(conn, "index.html", daily_reports: daily_reports, user: user)
   end
 

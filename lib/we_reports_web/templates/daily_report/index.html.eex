@@ -4,7 +4,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th>日報タイトル</th>
+        <th>提出者</th>
         <th>提出日付</th>
         <th></th>
       </tr>
@@ -12,8 +12,8 @@
     <tbody>
       <%= for daily_report <- @daily_reports do %>
         <tr>
-          <td><%= daily_report.id %></td>
-          <td></td>
+          <td><%= daily_report.user.username %></td>
+          <td><%= daily_report.reporting_date %></td>
           <td>
             <span><%= link "詳細", to: Routes.daily_report_path(@conn, :show, daily_report), class: "btn btn-info" %></span>
             <span><%= link "編集", to: Routes.daily_report_path(@conn, :edit, daily_report), class: "btn btn-success" %></span>

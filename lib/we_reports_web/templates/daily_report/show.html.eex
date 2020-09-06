@@ -1,18 +1,41 @@
-<h1>Show Daily report</h1>
-
-<ul>
-
-  <li>
-    <strong>Next action:</strong>
-    <%= @daily_report.next_action %>
-  </li>
-
-  <li>
-    <strong>Summary:</strong>
-    <%= @daily_report.summary %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.daily_report_path(@conn, :edit, @daily_report) %></span>
-<span><%= link "Back", to: Routes.daily_report_path(@conn, :index) %></span>
+<div class="container">
+  <%= if get_flash(@conn, :success) do %>
+  　<div class="row">
+      <p class="col-12 alert alert-success" role="alert"><%= get_flash(@conn, :success) %></p>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="jumbotron col-12">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>作業実施日:</strong>
+          <%= @daily_report.reporting_date %>
+        </li>
+        <li class="list-group-item">
+          <strong>メモ:</strong>
+          <%= @daily_report.memo %>
+        </li>
+        <li class="list-group-item">
+          <strong>まとめ・感想:</strong>
+          <%= @daily_report.summary %>
+        </li>
+        <%= Enum.map @daily_report.articles, fn a -> %>
+          <li class="list-group-item">
+            <strong>タイトル:</strong>
+            <%= a.title %>
+          </li>
+          <li class="list-group-item">
+            <strong>作業時間:</strong>
+            <%= a.work_time %>
+          </li>
+          <li class="list-group-item">
+            <strong>作業内容:</strong>
+            <%= a.body %>
+          </li>
+        <%= end %>
+     </ul>
+    </div>
+  </div>
+  <span><%= link "日報の編集", class: "btn btn-success", to: Routes.daily_report_path(@conn, :edit, @daily_report) %></span>
+  <span><%= link "日報一覧に戻る", class: "btn btn-outline-secondary", to: Routes.daily_report_path(@conn, :index) %></span>
+</div>

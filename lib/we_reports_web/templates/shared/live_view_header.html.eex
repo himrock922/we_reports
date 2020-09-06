@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark bg-primary">
   <a class="navbar-brand" href="<%= Routes.page_path(@socket, :index) %>">WeReports</a>
   <ul class="nav justify-content-end">
-    <%= if @current_user do %>
+    <%= if @user do %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle btn btn-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           メニュー

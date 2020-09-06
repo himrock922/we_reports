@@ -3,7 +3,7 @@ defmodule WeReports.Repo.Migrations.CreateDailyReports do
 
   def change do
     create table(:daily_reports) do
-      add :reporting_date, :utc_datetime
+      add :reporting_date, :date
       add :summary, :text
       add :memo, :text
       add :user_id, references(:users)

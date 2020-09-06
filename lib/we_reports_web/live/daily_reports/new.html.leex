@@ -1,20 +1,48 @@
-<button phx-click="add_articles" class="btn btn-success">新規案件の追加</button>
-<%= f = form_for @daily_report, "#", [phx_submit: :save] %>
+<%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save] %>
+  <%= hidden_input f, :user_id %>
   <div class="form-group">
+    <%= label(f, :reporting_date, "作業実施日") %>
     <div class="input-group date" id="reporting_date" data-target-input="nearest">
       <%= text_input f, :reporting_date, class: "form-control datetimepicker-input" %>
       <div class="input-group-append" data-target="#reporting_date" data-toggle="datetimepicker">
         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
       </div>
     </div>
-    <%= text_input f, :memo %>
-    <%= text_input f, :summary %>
+    <div class="form-group">
+      <%= label(f, :memo, "メモ") %>
+      <%= textarea f, :memo, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label(f, :memo, "まとめ・感想") %>
+      <%= textarea f, :summary, class: "form-control" %>
+    </div>
   </div>
-  
-  <% if Map.has_key?(@daily_report, :articles) do %>
-    <%= for article <- @daily_report.articles do %>
-      <%= select f, :title, Enum.flat_map(@current_user.groups, fn(g) -> Enum.map(g.propositions, fn(p) -> {"#{g.name} / #{p.name}", p.id} end) end), class: "form-control" %>
-    <% end %>
+  <%= inputs_for f, :articles, fn v -> %>
+    <div class="form-group">
+      <%= label(v, :title, "案件タイトル") %>
+      <%= select v, :title, Enum.flat_map(@user.groups, fn(g) -> Enum.map(g.propositions, fn(p) -> {"#{g.name} / #{p.name}", "#{g.name} / #{p.name}"} end) end), class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label(v, :body, "作業内容") %>
+      <%= textarea v, :body, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label(v, :work_time, "作業時間") %>
+      <%= time_input v, :work_time, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label v, :delete, "削除" %><br>
+      <%= if is_nil(v.data.tmp_id) do %>
+        <%= checkbox v, :delete %>
+      <% else %>
+        <%= hidden_input v, :temp_id %>
+        <a href="#" phx-click="remove-article" phx-value-remove="<%= v.data.tmp_id %>">&times</a>
+      <% end %>
+    </div>
+
   <% end %>
-  <%= submit "Save" %>
+  <div class="form-group">
+    <a href="#" phx-click="add_article" class="btn btn-success">新規案件の追加</a>
+  </div>
+  <%= submit "提出", class: "btn btn-primary" %>
 </form>
