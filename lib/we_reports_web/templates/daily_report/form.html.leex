@@ -1,4 +1,4 @@
-<%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save] %>
+<%= form_for @changeset, @action, [phx_change: :validate, class: "block", csrf_token: @csrf_token], fn f -> %>
   <%= hidden_input f, :user_id %>
   <div class="form-group">
     <%= label(f, :reporting_date, "作業実施日") %>
@@ -45,4 +45,4 @@
     <a href="#" phx-click="add_article" class="btn btn-success">新規案件の追加</a>
   </div>
   <%= submit "提出", class: "btn btn-primary" %>
-</form>
+<% end %>

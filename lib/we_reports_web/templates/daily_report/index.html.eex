@@ -1,6 +1,6 @@
 <div class="container">
   <h1>日報一覧</h1>
-  <span><%= live_redirect "日報の新規作成", to: Routes.live_path(@conn, WeReportsWeb.DailyReports.New, user: @user), class: "btn btn-primary" %></span>
+  <span><%= link "日報の新規作成", to: Routes.daily_report_path(@conn, :new), class: "btn btn-primary" %></span>
   <table class="table">
     <thead>
       <tr>

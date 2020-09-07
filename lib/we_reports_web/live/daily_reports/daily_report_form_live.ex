@@ -1,26 +1,35 @@
-defmodule WeReportsWeb.DailyReports.New do
-    use WeReportsWeb, :live_view
-    use Phoenix.LiveView, layout: {WeReportsWeb.LayoutView, "live.html"}
+defmodule WeReportsWeb.DailyReportFormLive do
+    use Phoenix.LiveView
     alias WeReports.Articles.Article
     alias WeReports.UserManager
     alias WeReports.DailyReports
     alias WeReports.Repo
     alias WeReports.DailyReports.DailyReport
-
     @impl true
     def mount(params, session, socket) do
-      case UserManager.get_user_groups(String.to_integer(params["user"])) do
+      case UserManager.get_user_groups(session["current_user_id"]) do
         user ->
-          daily_report = %DailyReport{user_id: user.id, articles: []}
+          daily_report = get_daily_report(session, user)
           changeset =
             DailyReports.change_daily_report(daily_report)
             |> Ecto.Changeset.put_assoc(:articles, daily_report.articles)
-          {:ok, assign(socket, changeset: changeset, daily_report: daily_report, user: user)}
+          assigns = [
+            action: session["action"],
+            csrf_token: session["csrf_token"],
+            changeset: changeset,
+            daily_report: daily_report,
+            user: user
+          ]
+          {:ok, assign(socket, assigns)}
         _ ->
           {:noreply,
             socket
             |> put_flash(:error, "ユーザが見つかりませんでした")}
       end
+    end
+
+    def render(assigns) do
+      WeReportsWeb.DailyReportView.render("form.html", assigns)
     end
   
     @impl true
@@ -63,20 +72,8 @@ defmodule WeReportsWeb.DailyReports.New do
       {:noreply, assign(socket, changeset: changeset)}
     end
 
-    def handle_event("save", %{"daily_report" => params}, socket) do
-      case DailyReports.create_daily_report(params) do
-        {:ok, daily_report} ->
-          {:noreply,
-          socket
-          |> put_flash(:success, "日報の作成に成功しました。")
-          |> redirect(to: Routes.daily_report_path(socket, :show, daily_report))}
-        _ ->
-          {:noreply,
-          socket
-          |> put_flash(:error, "日報の作成に失敗しました。")}
-      end
-    end
-
+    defp get_daily_report(%{"id" => id} = _daily_report_params, user), do: DailyReports.get_daily_report!(id)
+    defp get_daily_report(_daily_report_params, user), do: %DailyReport{user_id: user.id, articles: []}
     defp get_tmp_id, do: :crypto.strong_rand_bytes(5) |> Base.url_encode64 |> binary_part(0, 5)
   end
   

@@ -39,12 +39,7 @@ defmodule WeReportsWeb.Router do
     resources "/groups", GroupController do
       resources "/propositions", PropositionController
     end
-    live "/daily_reports/new", DailyReports.New
-    get "/daily_reports", DailyReportController, :index
-    get "/daily_reports/:id", DailyReportController, :show
-    get "/daily_reports/:id/edit", DailyReportController, :edit
-    delete "/daily_reports/:id", DailyReportController, :delete
-    resources "/articles", ArticleController, except: [:new, :edit]
+    resources "daily_reports", DailyReportController
   end
 
   # Other scopes may use custom stacks.
