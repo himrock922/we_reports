@@ -7,7 +7,6 @@ defmodule WeReports.DailyReports do
   alias WeReports.Repo
 
   alias WeReports.DailyReports.DailyReport
-  alias WeReports.ArticlesDailyReports
   alias WeReports.Articles.Article
   alias WeReports.Articles
   @doc """

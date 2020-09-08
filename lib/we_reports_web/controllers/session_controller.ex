@@ -1,7 +1,7 @@
 defmodule WeReportsWeb.SessionController do
   use WeReportsWeb, :controller
   alias WeReports.{UserManager, UserManager.Guardian, UserManager.User}
-  require IEx
+
   def new(conn, _) do
     changeset = UserManager.change_user(%User{})
     maybe_user = Guardian.Plug.current_resource(conn)

@@ -1,7 +1,8 @@
 defmodule WeReports.DailyReports.DailyReport do
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
-  require IEx
+
   schema "daily_reports" do
     field :reporting_date, :date
     field :memo, :string
