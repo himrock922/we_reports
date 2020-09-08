@@ -1,11 +1,7 @@
 defmodule WeReportsWeb.DailyReportFormLive do
   @moduledoc false
   use Phoenix.LiveView
-  alias WeReports.Articles.Article
-  alias WeReports.UserManager
-  alias WeReports.DailyReports
-  alias WeReports.Repo
-  alias WeReports.DailyReports.DailyReport
+  alias WeReports{Articles.Article, DailyReports.DailyReport, DailyReports, Repo, UserManager}
   @impl true
   def mount(params, session, socket) do
     case UserManager.get_user_groups(session["current_user_id"]) do
@@ -32,7 +28,7 @@ defmodule WeReportsWeb.DailyReportFormLive do
   def render(assigns) do
     WeReportsWeb.DailyReportView.render("form.html", assigns)
   end
-  
+
   @impl true
   def handle_event("add_article", _params, socket) do
     existing_articles = Map.get(socket.assigns.changeset.changes, :articles, socket.assigns.daily_report.articles)

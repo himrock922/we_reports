@@ -6,9 +6,7 @@ defmodule WeReports.DailyReports do
   import Ecto.Query, warn: false
   alias WeReports.Repo
 
-  alias WeReports.DailyReports.DailyReport
-  alias WeReports.Articles.Article
-  alias WeReports.Articles
+  alias WeReports{Articles.Article, Articles, DailyReports.DailyReport}
   @doc """
   Returns the list of daily_reports.
 
