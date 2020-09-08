@@ -1,7 +1,9 @@
 defmodule WeReportsWeb.DailyReportFormLive do
   @moduledoc false
   use Phoenix.LiveView
-  alias WeReports.{Articles.Article, DailyReports.DailyReport, DailyReports, Repo, UserManager}
+  alias WeReports.Repo
+  alias WeReports.{Articles.Article, DailyReports, DailyReports.DailyReport, UserManager}
+
   @impl true
   def mount(params, session, socket) do
     case UserManager.get_user_groups(session["current_user_id"]) do

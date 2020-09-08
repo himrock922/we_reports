@@ -35,7 +35,7 @@ defmodule WeReports.MixProject do
   defp deps do
     [
       {:argon2_elixir, "~> 2.0"},
-      {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:comeonin, "~> 5.1.0"},
       {:dialyxir, "~> 1.0.0-rc.7", only: [:dev, :test], runtime: false},
       {:ecto_enum, "~> 1.4"},
