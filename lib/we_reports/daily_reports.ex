@@ -55,7 +55,6 @@ defmodule WeReports.DailyReports do
     |> Repo.insert()
   end
 
-  def list_articles, do: Repo.preload(:articles)
   @doc """
   Updates a daily_report.
 
