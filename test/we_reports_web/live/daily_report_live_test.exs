@@ -19,5 +19,4 @@ defmodule WeReportsWeb.DailyReportLiveTest do
     %{daily_report: daily_report}
   end
 
-
 end
