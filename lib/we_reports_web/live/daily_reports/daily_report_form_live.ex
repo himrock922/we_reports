@@ -18,7 +18,7 @@ defmodule WeReportsWeb.DailyReportFormLive do
           user: user
         ]
         {:ok, assign(socket, assigns)}
-      _ ->
+      {:error, _} ->
         {:noreply,
           socket
           |> put_flash(:error, "ユーザが見つかりませんでした")}
