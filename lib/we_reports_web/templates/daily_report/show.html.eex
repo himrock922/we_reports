@@ -32,7 +32,7 @@
             <strong>作業内容:</strong>
             <%= a.body %>
           </li>
-        <%= end %>
+        <% end %>
      </ul>
     </div>
   </div>
