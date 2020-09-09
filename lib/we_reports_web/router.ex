@@ -5,6 +5,7 @@ defmodule WeReportsWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
+    plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -36,9 +37,9 @@ defmodule WeReportsWeb.Router do
   scope "/", WeReportsWeb do
     pipe_through [:browser, :auth, :ensure_auth]
     resources "/groups", GroupController do
-      resources "/propositions", PropositionController do
-      end
+      resources "/propositions", PropositionController
     end
+    resources "daily_reports", DailyReportController
   end
 
   # Other scopes may use custom stacks.

@@ -35,13 +35,17 @@ defmodule WeReports.MixProject do
   defp deps do
     [
       {:argon2_elixir, "~> 2.0"},
-      {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:comeonin, "~> 5.1.0"},
       {:dialyxir, "~> 1.0.0-rc.7", only: [:dev, :test], runtime: false},
       {:ecto_enum, "~> 1.4"},
-      {:phoenix, "~> 1.4.11"},
-      {:phoenix_pubsub, "~> 1.1"},
+      {:guardian_phoenix, "~> 2.0"},
+      {:phoenix, "~> 1.5.4"},
       {:phoenix_ecto, "~> 4.0"},
+      {:phoenix_pubsub, "~> 2.0"},
+      {:phoenix_live_view, "~> 0.14.4"},
+      {:floki, ">= 0.0.0", only: :test},
+      {:plug_cowboy, "~> 2.1"},
       {:ecto_sql, "~> 3.1"},
       {:guardian, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
@@ -49,7 +53,6 @@ defmodule WeReports.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
     ]
   end
 

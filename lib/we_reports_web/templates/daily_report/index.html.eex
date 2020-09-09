@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>日報一覧</h1>
+  <span><%= link "日報の新規作成", to: Routes.daily_report_path(@conn, :new), class: "btn btn-primary" %></span>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>提出者</th>
+        <th>提出日付</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for daily_report <- @daily_reports do %>
+        <tr>
+          <td><%= daily_report.user.username %></td>
+          <td><%= daily_report.reporting_date %></td>
+          <td>
+            <span><%= link "詳細", to: Routes.daily_report_path(@conn, :show, daily_report), class: "btn btn-info" %></span>
+            <span><%= link "編集", to: Routes.daily_report_path(@conn, :edit, daily_report), class: "btn btn-success" %></span>
+            <span><%= link "削除", to: Routes.daily_report_path(@conn, :delete, daily_report), class: "btn btn-danger", method: :delete, data: [confirm: "日報を削除します。よろしいですか?"] %></span>
+          </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

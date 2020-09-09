@@ -5,6 +5,7 @@ defmodule WeReports.UserManager.Pipeline do
       error_handler: WeReports.UserManager.ErrorHandler,
       module: WeReports.UserManager.Guardian
 
+  plug Guardian.Plug.VerifyCookie
   # If there is a session token, restrict it to an access token and validate it
   plug Guardian.Plug.VerifySession, claims: %{"typ" => "access"}
   # If there is an authorization header, restrict it to an access token and validate it

@@ -1,6 +1,8 @@
 defmodule WeReportsWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :we_reports
 
+  socket "/live", Phoenix.LiveView.Socket, websocket: true
+
   socket "/socket", WeReportsWeb.UserSocket,
     websocket: true,
     longpoll: false

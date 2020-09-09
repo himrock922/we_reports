@@ -8,6 +8,8 @@ defmodule WeReports.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
+      # Start the PubSub system
+      {Phoenix.PubSub, name: WeReports.PubSub},
       # Start the Ecto repository
       WeReports.Repo,
       # Start the endpoint when the application starts
