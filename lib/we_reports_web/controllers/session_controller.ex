@@ -20,6 +20,7 @@ defmodule WeReportsWeb.SessionController do
   def logout(conn, _) do
     conn
     |> Guardian.Plug.sign_out()
+    |> Guardian.Plug.clear_remember_me()
     |> redirect(to: "/login")
   end
 
@@ -27,6 +28,7 @@ defmodule WeReportsWeb.SessionController do
     conn
     |> put_flash(:info, "WeReportsにログインしました!")
     |> Guardian.Plug.sign_in(user)
+    |> Guardian.Plug.remember_me(user)
     |> redirect(to: "/groups")
   end
 
